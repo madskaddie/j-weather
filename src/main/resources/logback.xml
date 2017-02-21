@@ -1,0 +1,23 @@
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+<!-- 	<logger name="org.eclipse.jetty.io.ChannelEndPoint" level="info" /> -->
+<!-- 	<logger name="org.eclipse.jetty.io.ManagedSelector" level="info" /> -->
+	<logger name="org.eclipse.jetty.io" level="info" />
+	<logger name="org.eclipse.jetty.util" level="info" />
+	<logger name="org.eclipse.jetty.server.HttpChannelState" level="info" />
+	<logger name="org.eclipse.jetty.server.HttpChannel" level="info" />
+	<logger name="org.eclipse.jetty.server.HttpConnection" level="info" />
+	<logger name="org.eclipse.jetty.server.HttpConnection" level="info" />
+	<logger name="org.eclipse.jetty.http.HttpParser" level="info" />
+	<root level="debug">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

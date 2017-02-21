@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>como está o tempo</title>
+  </head>
+  <body>
+    <h1>Localidade</h1>
+    <form method="GET" action="/">
+      <select name="placeRef">
+          <option disabled selected value> -- select an option -- </option>
+        {{#each places}}<option value="{{code}}">{{description}}</option>{{/each}}
+      </select>
+      <input type="submit" value="ver" />
+    </form>
+    {{#selectedPlace}}
+    <h1> {{description}}</h1>
+    {{#weather}}
+    <ul>
+      <li>{{tempMin}}-{{tempMax}}</li>
+      <li>{{skyState}}</li>
+      <li>{{windSpeed}} - {{windDirection}}</li>
+    </ul>
+    {{/weather}}
+    {{/selectedPlace}}
+  </body>
+</html>

@@ -1,0 +1,4094 @@
+
+
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt" xml:lang="pt">
+
+
+
+
+  
+
+
+
+
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta name="author" content="http://www.ipma.pt" />
+  <meta name="keywords" lang="pt" content="Instituto Português do Mar e da Atmosfera, Mar, oceano, atmosfera, Instituto de Meteorologia, IPIMAR, o tempo, previsão do tempo, previsão meteorológica, clima, Portugal, sismologia, sismos" />
+  <meta name="keywords" lang="en" content="forecast, weather, Portugal, climate, seismic, sea, ocean" />
+
+	<title>IPMA - Vers&#227;o Texto</title>
+
+	<link rel="shortcut icon" type="image/x-icon" href="/opencms/bin/icons/favicon.ico" />
+	<link rel="stylesheet" type="text/css" href="/opencms/system/modules/ipma.website/resources/ipma_website.css" />
+	<link rel="stylesheet" type="text/css" href="/export/system/modules/ipma.website/resources/css/font-awesome-4.5.min.css" />
+	<link rel="stylesheet" type="text/css" href="/export/system/modules/ipma.website/resources/css/leaflet-0.7.7.css" />
+	<script type="text/javascript" src="/opencms/system/modules/ipma.website/resources/js/leaflet-0.7.7.js"></script>
+	<script type="text/javascript" src="/opencms/system/modules/ipma.website/resources/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/opencms/system/modules/ipma.website/resources/js/ticker.js"></script>
+
+	<script type="text/javascript"><!--AC_FL_RunContent = 0;--></script>
+	<script type="text/javascript" src="/opencms/system/modules/ipma.website/resources/js/AC_RunActiveContent_ipma.js" ></script>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <body><div id="BG_Bot">
+    <div id="Container">
+    	<!-- START HEADER -->
+    	
+	     
+
+
+
+    <div id="Header">
+      <div class="col_esq"><h1><a href="/opencms/pt/index.html" accesskey="h" ><img src="/opencms/system/modules/ipma.website/resources/images/logo_ipma_hp.png" alt="Instituto Portugues do Mar e Atmosfera - Homepage" /></a></h1></div>
+        <h2 id="Top_h2">
+          <ul id="NavList">
+<li class=''><a href='/opencms/pt/oipma/'>Quem somos</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/oipma/onde/index.jsp'>Onde estamos</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/oipma/quem/investigadores/index.jsp'>Equipa de investigadores</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/recrutamento/index.jsp'>Recrutamento</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/investigacao/index.jsp'>Projetos</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/publicacoes/index.jsp'><span style="font-size:13px;color:#1f87c6;">e</span>Biblioteca</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/enciclopedia/index.html'>Enciclopédia <span style="font-size:13px;color:#1f87c6;">ipma</span></a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class=''><a href='/opencms/pt/siteinfo/contacto.jsp'>Contactos</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li><li class='ic_en'><a href='/opencms/en/index.html'>English</a></li>
+      </ul>
+    </h2>
+
+	<div class="pesq">
+		<form method="post" name="searchform" action="/pt/pesquisa/searchresult.jsp" onsubmit="return validateSearch()">
+			<input type="hidden" name="index" value="ipma PT"/>
+			<input type="hidden" name="field" value="title"/>
+			<input type="hidden" name="field" value="keywords"/>
+			<input type="hidden" name="field" value="description"/>
+			<input type="hidden" name="field" value="content"/>
+			<label for="query"></label>
+			<input type="text" class="pesq_int_box" id="query" name="query" value="Pesquisa" onfocus="if(this.value=='Pesquisa') this.value=''" onblur="if(this.value=='') this.value='Pesquisa'" />
+			<input type="submit" class="pesq_button" value="ok" />
+		</form>
+  </div>
+
+<script type="text/javascript">
+//  var $j = jQuery.noConflict(); 
+  $(document).ready(function(){ 
+    $('ul#mainnav li').hover( function(){
+      $(this).addClass('hover');
+      $( 'ul.subnav', this ).css('visibility', 'visible');        
+    }, function(){
+      $(this).removeClass('hover');
+      $( 'ul.subnav', this ).css('visibility', 'hidden');
+    });
+});
+</script>
+<div>
+  <ul id="mainnav">
+    <li><span>Tempo</span><ul class='subnav'>
+<li><a title='Tempo presente' href='/opencms/pt/otempo/obs.tempo.presente/'>Tempo presente</a></li>
+<li><a title='Previsão significativa' href='/opencms/pt/otempo/prev.significativa/'>Previsão significativa</a></li>
+<li><a title='Previsão 10 dias e horária' href='/opencms/pt/otempo/prev.localidade.hora/'>Previsão 10 dias e horária</a></li>
+<li><a title='Previsão descritiva' href='/opencms/pt/otempo/prev.descritiva/'>Previsão descritiva</a></li>
+<li><a title='Avisos Meteorológicos' href='/opencms/pt/otempo/prev-sam/'>Avisos Meteorológicos</a></li>
+<li><a title='Cartas meteorológicas' href='/opencms/pt/otempo/prev.numerica/'>Cartas meteorológicas</a></li>
+<li><a title='Imagens satélite' href='/opencms/pt/otempo/obs.satelite/'>Imagens satélite</a></li>
+<li><a title='Imagens radar' href='/opencms/pt/otempo/obs.radar/'>Imagens radar</a></li>
+<li><a title='Descargas elétricas' href='/opencms/pt/otempo/obs.dea/'>Descargas elétricas</a></li>
+<li><a title='Estações on-line' href='/opencms/pt/otempo/obs.superficie/'>Estações on-line</a></li>
+<li><a title='Previsão no mundo' href='/opencms/pt/otempo/prev.mundo/'>Previsão no mundo</a></li>
+<li><a title='Previsão longo prazo' href='/opencms/pt/otempo/prev.longo.prazo/'>Previsão longo prazo</a></li>
+<li><a title='Testemunhou um fenómeno meteorológico?' href='/opencms/pt/otempo/meteoglobal/'>Testemunhou um fenómeno meteorológico?</a></li>
+</ul></li>
+<li><span>Mar</span><ul class='subnav'>
+<li><a title='Praias e Portos' href='/opencms/pt/maritima/costeira/'>Praias e Portos</a></li>
+<li><a title='Previsão altura significativa' href='/opencms/pt/maritima/hs/'>Previsão altura significativa</a></li>
+<li><a title='Previsão período de pico' href='/opencms/pt/maritima/cartas/'>Previsão período de pico</a></li>
+<li><a title='Previsão de corrente' href='/opencms/pt/maritima/currents/'>Previsão de corrente</a></li>
+<li><a title='Previsão de temperatura' href='/opencms/pt/maritima/sst/'>Previsão de temperatura</a></li>
+<li><a title='Previsão da elevação' href='/opencms/pt/maritima/ssh/'>Previsão da elevação</a></li>
+<li><a title='Previsão para navegação' href='/opencms/pt/maritima/boletins/'>Previsão para navegação</a></li>
+</ul></li>
+<li><span>Sismos</span><ul class='subnav'>
+<li><a title='Atividade sísmica' href='/opencms/pt/geofisica/sismicidade/'>Atividade sísmica</a></li>
+<li><a title='Shakemap' href='/opencms/pt/geofisica/shakemap/'>Shakemap</a></li>
+<li><a title='Sentiu um sismo?' href='/opencms/pt/geofisica/informe/'>Sentiu um sismo?</a></li>
+<li><a title='Comunicados' href='/opencms/pt/geofisica/comunicados/'>Comunicados</a></li>
+<li><a title='Escalas sísmicas' href='/opencms/pt/geofisica/escalas/'>Escalas sísmicas</a></li>
+<li><a title='Rede sísmica' href='/opencms/pt/geofisica/redes/'>Rede sísmica</a></li>
+<li><a title='Medidas em caso sismo' href='/opencms/pt/geofisica/medidas/'>Medidas em caso sismo</a></li>
+<li><a title='Projetos' href='/opencms/pt/geofisica/projetos/'>Projetos</a></li>
+<li><a title='Boletins' href='/opencms/pt/geofisica/boletins/'>Boletins</a></li>
+</ul></li>
+<li><span>Clima</span><ul class='subnav'>
+<li><a title='Acompanhamento do clima' href='/opencms/pt/oclima/monitorizacao/'>Acompanhamento do clima</a></li>
+<li><a title='Extremos climatológicos' href='/opencms/pt/oclima/extremos.clima/'>Extremos climatológicos</a></li>
+<li><a title='Normais climatológicas' href='/opencms/pt/oclima/normais.clima/'>Normais climatológicas</a></li>
+<li><a title='Monitorização da Seca' href='/opencms/pt/oclima/observatorio.secas/'>Monitorização da Seca</a></li>
+<li><a title='Boletins climatológicos' href='/opencms/pt/oclima/boletins/'>Boletins climatológicos</a></li>
+<li><a title='Serviços de Clima' href='/opencms/pt/oclima/servicos.clima/'>Serviços de Clima</a></li>
+<li><a title='Portal do Clima' href='/opencms/pt/oclima/portaldoclima/'>Portal do Clima</a></li>
+</ul></li>
+<li><span>Pescas e aquacultura</span><ul class='subnav'>
+<li><a title='Bivalves, ponto situação' href='/opencms/pt/pescas/bivalves/'>Bivalves, ponto situação</a></li>
+<li><a title='Bivalves - histórico' href='/opencms/pt/pescas/bivalves-hist/'>Bivalves - histórico</a></li>
+<li><a title='Recursos Vivos' href='/opencms/pt/pescas/recursos/'>Recursos Vivos</a></li>
+<li><a title='Documentos e legislação' href='/opencms/pt/pescas/documentos/'>Documentos e legislação</a></li>
+<li><a title='Estação Piscicultura de Olhão' href='/opencms/pt/pescas/eppo/'>Estação Piscicultura de Olhão</a></li>
+<li><a title='Estação oceanogra. Cascais' href='/opencms/pt/pescas/cascaiswatch/'>Estação oceanogra. Cascais</a></li>
+<li><a title='Projectos' href='/opencms/pt/pescas/projetos/'>Projectos</a></li>
+<li><a title='Divulgação' href='/opencms/pt/pescas/divulgacao/'>Divulgação</a></li>
+<li><a title='Espaço Aquicultura' href='/opencms/pt/pescas/aquicultura/'>Espaço Aquicultura</a></li>
+</ul></li>
+<li><span>Aeronáutica</span><ul class='subnav'>
+<li><a title='Mensagens TAF e METAR' href='/opencms/pt/aeronautica/taf.metar/'>Mensagens TAF e METAR</a></li>
+<li><a title='Self-briefing' href='/opencms/pt/aeronautica/selfbriefing/'>Self-briefing</a></li>
+<li><a title='Autoridade Meteorológica' href='/opencms/pt/aeronautica/anma/'>Autoridade Meteorológica</a></li>
+<li><a title='Saber mais, aeronáutica.' href='/opencms/pt/aeronautica/saber.mais/'>Saber mais, aeronáutica.</a></li>
+</ul></li>
+<li><span>Agricultura</span><ul class='subnav'>
+<li><a title='Evapotranspiração [ET0]' href='/opencms/pt/agrometeorologia/evapotranspiracao/'>Evapotranspiração [ET0]</a></li>
+<li><a title='Dados diários' href='/opencms/pt/agrometeorologia/info-diaria/'>Dados diários</a></li>
+<li><a title='Dados mensais' href='/opencms/pt/agrometeorologia/info-mensal/'>Dados mensais</a></li>
+<li><a title='Dados fruticultura' href='/opencms/pt/agrometeorologia/fruta/'>Dados fruticultura</a></li>
+<li><a title='Dados viticultura' href='/opencms/pt/agrometeorologia/vinha/'>Dados viticultura</a></li>
+<li><a title='Boletins agrometeo' href='/opencms/pt/agrometeorologia/boletins/'>Boletins agrometeo</a></li>
+<li><a title='Mais informação' href='/opencms/pt/agrometeorologia/agro-info/'>Mais informação</a></li>
+</ul></li>
+<li><span>Ambiente</span><ul class='subnav'>
+<li><a title='Risco incêndio' href='/opencms/pt/ambiente/risco.incendio/'>Risco incêndio</a></li>
+<li><a title='Índice ultravioleta' href='/opencms/pt/ambiente/uv/'>Índice ultravioleta</a></li>
+<li><a title='Indices Biometeorológicos' href='/opencms/pt/ambiente/biometeo/'>Indices Biometeorológicos</a></li>
+<li><a title='Gases com efeito estufa' href='/opencms/pt/ambiente/gases.estufa/'>Gases com efeito estufa</a></li>
+</ul></li>
+<li><span>Navios</span><ul class='subnav'>
+<li><a title='Mar Portugal' href='/opencms/pt/navios/mar-portugal/'>Mar Portugal</a></li>
+<li><a title='Noruega' href='/opencms/pt/navios/noruega/'>Noruega</a></li>
+<li><a title='Diplodus' href='/opencms/pt/navios/diplodus/'>Diplodus</a></li>
+<li><a title='Tellina' href='/opencms/pt/navios/tellina/'>Tellina</a></li>
+<li><a title='Puntazzo' href='/opencms/pt/navios/puntazzo/'>Puntazzo</a></li>
+</ul></li>
+<li><span>Espaço</span><ul class='subnav'>
+<li><a title='Satélite MSG' href='/opencms/pt/espaco/msg/'>Satélite MSG</a></li>
+<li><a title='Imagens do sol' href='/opencms/pt/espaco/sol/'>Imagens do sol</a></li>
+</ul></li>
+
+  </ul>
+
+<!--	<div id="dropmenu">
+    <div class="menu_h">-->
+
+<!--		</div>
+	</div>-->
+</div>
+
+
+
+
+
+
+
+    	<!-- END HEADER -->
+    	<!-- START MAIN -->
+    	<div id="MainContent">
+    		<!-- START LEFT COLUMN -->
+    		<div id="LeftCol_container">
+			
+
+
+
+
+
+<script type="text/javascript">
+<!--
+$(function(){
+	$('#news-left').vTicker({ speed: 2800,pause: 4800,animation: 'fade',mousePause: true, showItems: 8, height:445});
+});
+-->
+</script>
+<noscript>Rotacao de Noticias</noscript>
+<div class='news_esq'><h2 class='bckg_generic border_block_title'>Noticias</h2>
+<div id='news-left'> <ul><li><h3>ciclone</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/img_news_vento.jpg' alt='vento'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/ciclone-1941.html'>Ciclone de 1941 </a><br/><span>2017-02-16</span></div></li>
+<li><h3>enxofre</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/img_news_protocolo_montreal.jpg' alt='poluição'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/enxofre-setubal.html'>Episódio de libertação de enxofre em Setúbal – 14/15 de fevereiro de 2017</a><br/><span>2017-02-16</span></div></li>
+<li><h3>radar</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/Fig_radar2.JPG' alt='instrumentos'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/visitas-radar-arouca-update.html'>Visitas ao radar de Arouca do IPMA: atualização</a><br/><span>2017-02-13</span></div></li>
+<li><h3>gelo</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/gelo.jpg' alt='gelo'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/ano-polar-2016.html'>O  gelo polar em 2016</a><br/><span>2017-02-09</span></div></li>
+<li><h3>clima</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/img_news_gelo.jpg' alt='gelo'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/rel-clima-janeiro-2017.html'>Janeiro 2017</a><br/><span>2017-02-09</span></div></li>
+<li><h3>Workshop </h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/Maturacao-Matosinhos.jpg' alt='laboratório'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Workshop-maturacao.html'>Workshop Interno de Maturação (WKIM)</a><br/><span>2017-02-07</span></div></li>
+<li><h3>Palestra</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/caravela-portuguesa.jpg' alt='caravela portuguesa'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Palestra-Luis-Quinta.html'>"País das Maravilhas"</a><br/><span>2017-02-02</span></div></li>
+<li><h3>Palestra</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/Gymnodinium.jpg' alt='Gymnodinium'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Palestra-Paulo-Vale.html'>”A influência da actividade solar e da actividade  geomagnética em culturas do dinoflagelado Gymnodinium catenatum”</a><br/><span>2017-02-02</span></div></li>
+<li><h3>Mário Ruivo</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/Mario-Ruivo.jpg' alt='Professor Doutor Mário Ruivo'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Mario-Ruivo.html'>FALECEU O PROFESSOR MÁRIO RUIVO</a><br/><span>2017-01-25</span></div></li>
+<li><h3>Projeto</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/medusa-team.jpg' alt='medusa-team'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Medusa-deep-sea.html'>MEDUSA DEEP-SEA: um marco importante do projeto foi alcançado a 29 de dezembro de 2016</a><br/><span>2017-01-20</span></div></li>
+<li><h3>NI Noruega</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2017/Noruega-doca-seca.jpg' alt='Navio Noruega'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/Noruega-doca-seca.html'>Noruega em doca seca para intervenções de inspeção e manutenção</a><br/><span>2017-01-20</span></div></li>
+<li><h3>Publicação</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/2016/img-pub-ipma.jpg' alt='teste'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/relatorio-14.html'>Utilização de polifosfatos na indústria transformadora do pescado: controlo dos níveis e efeito do processamento</a><br/><span>2017-01-10</span></div></li>
+<li><h3>eumetsat</h3>
+<div><img class='img_listhp' src='/export/sites/ipma/bin/images.news/news-sentinel-3.jpg' alt='satélite sentinel 3'/><a href='/opencms/pt/media/noticias/news.detail.jsp?f=/pt/media/noticias/textos/concurso-minecraft-eumetsat.html'>Concurso EUMETSAT – Minecraft</a><br/><span>2016-11-16</span></div></li>
+</ul></div></div>
+<!--
+		<div class="news_esq">
+<h3 class="bckg_generic border_block_title_blues martop20">Projetos EEA Grants</h3>
+<div style="position:relative; display:block; width:175px;height:57px; overflow:hidden;"><img id="iimg_2007782058" alt="EEA-Grants-PT02" style="width:175px;" src="/export/sites/ipma/bin/images.site/projetos/EEA-Grants.png" /> <a style="text-align: right; position: absolute; left: 45px; width: 125px; line-height: 18px; font-weight: bold; font-size: 10px; top: 8px;" href="/opencms/pt/investigacao/eeagrants/">Projetos financiados pelo EEA Grants</a></div>
+</div>
+-->
+
+
+    		</div>
+        <!-- END LEFT COLUMN -->
+        <!-- START BREAD -->
+        <div id="Bread_container">
+     		  
+
+
+
+
+
+<!--TEMPLATE MAIN CONTAINER WITH NO SEARCH-->
+
+
+<span class="bread_lks"><a href="/opencms/pt/">IPMA</a></span>
+
+
+
+<!--TEMPLATE FOR PRINT PAGE-->
+
+
+        </div>
+        <!-- START BREAD -->
+        <!-- START CENTRAL & RIGHT CONTENT  -->        
+        <div id="CRcol_container"><a name="contenttop"></a>
+        	<!-- START CENTRAL CONTENT  -->
+
+
+
+<script type="text/javascript">
+<!--
+var objDivVisible=0;
+
+function showDiv(divID) {
+	if (objDivVisible!=0) {
+		objDivVisible.style.visibility="hidden";			
+		objDivVisible.style.display="none";
+	}
+	objDivVisible = document.getElementById(divID);
+	objDivVisible.style.visibility="visible";			
+	objDivVisible.style.display="block";
+}
+
+function show2Div(divIDNum,divType){
+	for (x=0;x<divNum;x++) {
+		if (x==divIDNum) {
+			document.getElementById('divID'+x).style.visibility="visible";			
+			document.getElementById('divID'+x).style.display="block";			
+		}
+		else {
+			document.getElementById('divID'+x).style.visibility="hidden";			
+			document.getElementById('divID'+x).style.display="none";			
+		}
+	}
+}
+var thisID;
+var oldID;
+function addClassToId(liID, classToAdd) {
+  thisID=document.getElementById(liID);
+  var currentClassValue = thisID.className;
+    
+  if (currentClassValue.indexOf(classToAdd) == -1) {
+    if ((currentClassValue == null) || (currentClassValue === "")) {
+      thisID.className = classToAdd;
+    } else {
+      thisID.className += " " + classToAdd;
+    }
+    if ((oldID!=null)){
+      removeClassToId(oldID, classToAdd);
+    }
+  }
+  oldID = thisID;  
+}
+ 
+function removeClassToId(oldID, classToRemove) {
+  var currentClassValue = oldID.className;
+  if (currentClassValue == classToRemove) {
+    oldID.className = "";
+    return;
+  }
+  var classValues = currentClassValue.split(" ");
+  var filteredList = [];
+  for (var i = 0 ; i < classValues.length; i++) {
+    if (classToRemove != classValues[i]) {
+      filteredList.push(classValues[i]);
+    }
+  }
+  oldID.className = filteredList.join(" ");
+}
+// -->
+</script>
+
+<div id="RightCol_container">
+	<h3 class="bckg_blue text_white">Selecione a informa&ccedil;&atilde;o</h3>
+	<ul>
+		<li><a href="html.jsp">Tempo Presente</a></li>
+		<li><span class="list_a_on">Previs&atilde;o Significativa</span>
+		<ul>
+
+
+	<li><a id="linkID1" style="cursor: pointer" onClick="showDiv('divID1');addClassToId('linkID1', 'link_on');">Dom, 19 Fevereiro 2017</a></li>
+
+<li><a id="linkID2" style="cursor: pointer" onClick="showDiv('divID2');addClassToId('linkID2', 'link_on');">
+Seg, 20 Fevereiro 2017
+</a></li>
+
+<li><a id="linkID3" style="cursor: pointer" onClick="showDiv('divID3');addClassToId('linkID3', 'link_on');">
+Ter, 21 Fevereiro 2017
+</a></li></ul></li>
+
+		<li><a href="html-sam.jsp">Avisos Meteorol&oacute;gicos (SAM)</a></li>
+	</ul>
+	<h3 class="bckg_blue martop20">&Uacute;ltima atualiza&ccedil;&atilde;o: </h3>
+	<ul>
+		<li>Dom, 19 Fevereiro 2017 09:35 UTC</li>
+	</ul>
+	</div>
+
+
+
+      <div class="maincol"><a name="contenttop"></a>
+	<h2 class="bckg_blue"> Previs&atilde;o Significativa</h2>
+
+
+
+<div id="divID1" style="display:block;visibility:visible;position:relative;">
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do tempo no territ&oacute;rio para  Dom, 19 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do tempo no territ&oacute;rio para  2017-02-19">
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th><th rowspan="2">Estado</th>
+	<th colspan="2">Temp. (ºC)</th><th colspan="2">Vento</th></tr>	
+<tr><th>min.</th><th>max.</th><th>vel.</th><th>dir.</th></tr>	
+
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Aveiro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Beja</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Bragança</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">15</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Braga</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">4</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Castelo Branco</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">6</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Coimbra</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">6</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Évora</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Faro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">9</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Funchal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">14</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">VV</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">VV</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Guarda</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">2</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">12</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Leiria</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">4</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Lisboa</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Penhas Douradas</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">-1</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">9</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Porto</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Portalegre</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">15</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Porto Santo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">14</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Aguaceiros fracos</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Sagres</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Aguaceiros</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Santarém</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Setúbal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">6</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Sines</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Viana do Castelo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">6</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Viseu</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">15</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Vila Real</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">15</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Santa Cruz</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">14</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">S</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">S</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">Horta</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">13</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">S</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">S</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+	<td rowspan="2">Angra do Heroísmo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">10</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	<tr class="bkg_even">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+	<td rowspan="2">P. Delgada</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">10</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	<tr class="bkg_odd">
+
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do mar para  Dom, 19 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do mar para  2017-02-19">
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th>
+	<th rowspan="2">Temp. (ºC)</th><th colspan="2">Ondula&ccedil;&atilde;o</th></tr>	
+<tr><th>Altura (m)</th><th>Dire&ccedil;&atilde;o</th></tr>	
+
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Aveiro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Faro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-1,5</td>
+	<td class="text_center">SW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1</td>
+	<td class="text_center">SE</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Funchal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">18 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">SW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">18 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">SW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Lisboa</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Porto</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Porto Santo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">18 </td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">18 </td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">N</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Sagres</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Setúbal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Sines</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Viana do Castelo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">2,5-3,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14 </td>
+	<td class="text_center">1,5-2,5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Santa Cruz</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">SW</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">SW</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">Horta</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Angra do Heroísmo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	<tr class="bkg_even">
+
+	<td rowspan="2">P. Delgada</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16 </td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o de &Iacute;ndice Ultravioleta para  Dom, 19 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o de &Iacute;ndice Ultravioleta para  2017-02-19">
+<tr><th colspan="4">Previs&atilde;o de &Iacute;ndice Ultravioleta para  (2017-02-19)</th></tr>
+<tr><th>Local</th><th>Per&iacute;odo</th><th>&Iacute;ndice UV</th><th>Intervalo de tempo</th></tr>	
+
+	<tr class="bkg_odd">
+	<td>Aveiro</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Beja</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Bragança</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Braga</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Castelo Branco</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               2
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Coimbra</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Évora</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Faro</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Funchal</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               5
+
+<!--			   5
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Guarda</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Leiria</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Lisboa</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Penhas Douradas</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Portalegre</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto Santo</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sagres</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santarém</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               2
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Setúbal</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Sines</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Viana do Castelo</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Viseu</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Vila Real</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santa Cruz</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Horta</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Angra do Heroísmo</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>P. Delgada</td>
+	<td class="text_center">00h - 24h</td>
+
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+</table>
+</div>
+
+<script type="text/javascript">
+<!--
+objDivVisible = document.getElementById("divID1");
+addClassToId('linkID1', 'link_on');
+// -->
+</script>
+<noscript>Bloco de informação.</noscript>
+	
+<div id="divID2" style="display:none;visibility:hidden;position:relative;">
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do tempo no territ&oacute;rio para  Seg, 20 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do tempo no territ&oacute;rio para  2017-02-20">
+
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th><th rowspan="2">Estado</th>
+	<th colspan="2">Temp. (ºC)</th><th colspan="2">Vento</th></tr>	
+<tr><th>min.</th><th>max.</th><th>vel.</th><th>dir.</th></tr>	
+
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Aveiro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">9</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">21</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Beja</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Bragança</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">2</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Braga</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Castelo Branco</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Coimbra</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Évora</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">7</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Faro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">10</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Funchal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">15</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">VV</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">VV</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Guarda</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">2</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">13</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Leiria</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Lisboa</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">9</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Penhas Douradas</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">2</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">10</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Porto</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">20</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Portalegre</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Porto Santo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Aguaceiros fracos</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">14</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Aguaceiros fracos</td>
+
+	<td class="text_center">Vento forte</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Sagres</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Santarém</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">8</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">21</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Setúbal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">6</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">21</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Sines</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">10</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">19</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Viana do Castelo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">18</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Viseu</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">5</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu limpo</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Vila Real</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">3</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu pouco nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Santa Cruz</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">14</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">S</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">S</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Horta</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">12</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Angra do Heroísmo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">12</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">16</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">P. Delgada</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">12</td>
+	<td rowspan="2" class="text_center" style="vertical-align:middle;">17</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">Céu com períodos de muito nublado</td>
+
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do mar para  Seg, 20 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do mar para  2017-02-20">
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th>
+	<th rowspan="2">Temp. (ºC)</th><th colspan="2">Ondula&ccedil;&atilde;o</th></tr>	
+<tr><th>Altura (m)</th><th>Dire&ccedil;&atilde;o</th></tr>	
+
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Aveiro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Faro</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-1,5</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-1,5</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Funchal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">18</td>
+	<td class="text_center">1</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">18</td>
+	<td class="text_center">1</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Lisboa</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Porto</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Porto Santo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">18</td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">18</td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Sagres</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Setúbal</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Sines</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">15</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Viana do Castelo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">14</td>
+	<td class="text_center">1,5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Santa Cruz</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">2</td>
+	<td class="text_center">SW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">2</td>
+	<td class="text_center">SW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">Horta</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+	<td rowspan="2">Angra do Heroísmo</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+	<td rowspan="2">P. Delgada</td>
+
+	<td class="text_center">00h - 12h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+
+		<td class="text_center">12h - 24h</td>
+
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o de &Iacute;ndice Ultravioleta para  Seg, 20 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o de &Iacute;ndice Ultravioleta para  2017-02-20">
+<tr><th>Local</th><th>Per&iacute;odo</th><th>&Iacute;ndice UV</th><th>Intervalo de tempo</th></tr>	
+
+	<tr class="bkg_odd">
+	<td>Aveiro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Beja</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Bragança</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Braga</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Castelo Branco</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Coimbra</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Évora</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Faro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Funchal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Guarda</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Leiria</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Lisboa</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Penhas Douradas</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Portalegre</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto Santo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sagres</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santarém</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Setúbal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Sines</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Viana do Castelo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Viseu</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Vila Real</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santa Cruz</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Horta</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               2
+
+<!--			   1
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Angra do Heroísmo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>P. Delgada</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+</table>
+</div>
+	
+<div id="divID3" style="display:none;visibility:hidden;position:relative;">
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do tempo no territ&oacute;rio para  Ter, 21 Fevereiro 2017</h3></h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do tempo no territ&oacute;rio para  2017-02-21">
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th><th rowspan="2">Estado</th>
+	<th colspan="2">Temp. (ºC)</th><th colspan="2">Vento</th></tr>	
+<tr><th>min.</th><th>max.</th><th>vel.</th><th>dir.</th></tr>	
+
+	<tr class="bkg_odd">
+	<td>Aveiro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">8</td>
+	<td class="text_center">21</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Beja</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">8</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Bragança</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">3</td>
+	<td class="text_center">17</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Braga</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">3</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Castelo Branco</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">6</td>
+	<td class="text_center">19</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Coimbra</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">7</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Évora</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">6</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Faro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu pouco nublado</td>
+	<td class="text_center">11</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Funchal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu pouco nublado</td>
+	<td class="text_center">15</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Guarda</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">1</td>
+	<td class="text_center">14</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Leiria</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">6</td>
+	<td class="text_center">22</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Lisboa</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">9</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Penhas Douradas</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">1</td>
+	<td class="text_center">15</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu pouco nublado</td>
+	<td class="text_center">9</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Portalegre</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">8</td>
+	<td class="text_center">18</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto Santo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu com períodos de muito nublado</td>
+	<td class="text_center">14</td>
+	<td class="text_center">18</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sagres</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu pouco nublado</td>
+	<td class="text_center">10</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santarém</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">8</td>
+	<td class="text_center">21</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Setúbal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">6</td>
+	<td class="text_center">22</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Sines</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">11</td>
+	<td class="text_center">20</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Viana do Castelo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">5</td>
+	<td class="text_center">18</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Viseu</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">5</td>
+	<td class="text_center">18</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Vila Real</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu limpo</td>
+	<td class="text_center">3</td>
+	<td class="text_center">17</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santa Cruz</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu com períodos de muito nublado</td>
+	<td class="text_center">14</td>
+	<td class="text_center">17</td>
+	<td class="text_center">Vento moderado</td>
+	<td class="text_center">S</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Horta</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu com períodos de muito nublado</td>
+	<td class="text_center">13</td>
+	<td class="text_center">17</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Angra do Heroísmo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu com períodos de muito nublado</td>
+	<td class="text_center">12</td>
+	<td class="text_center">17</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">E</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>P. Delgada</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">Céu com períodos de muito nublado</td>
+	<td class="text_center">12</td>
+	<td class="text_center">18</td>
+	<td class="text_center">Vento fraco</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o do estado do mar para  Ter, 21 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o do estado do mar para  2017-02-21">
+<tr><th rowspan="2">Local</th><th rowspan="2">Per&iacute;odo</th>
+	<th rowspan="2">Temp. (ºC)</th><th colspan="2">Ondula&ccedil;&atilde;o</th></tr>	
+<tr><th>Altura (m)</th><th>Dire&ccedil;&atilde;o</th></tr>	
+
+	<tr class="bkg_odd">
+	<td>Aveiro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">14</td>
+	<td class="text_center">1.5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Faro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">16</td>
+	<td class="text_center">1.5-2</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Funchal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">19</td>
+	<td class="text_center">1-1.5</td>
+	<td class="text_center">SE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Lisboa</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">15</td>
+	<td class="text_center">1.5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Porto</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">14</td>
+	<td class="text_center">1.5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto Santo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">18</td>
+	<td class="text_center">2-3</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sagres</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">15</td>
+	<td class="text_center">1.5-2</td>
+	<td class="text_center">NE</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Setúbal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">15</td>
+	<td class="text_center">1-1.5</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sines</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">15</td>
+	<td class="text_center">1.5-2</td>
+	<td class="text_center">NW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Viana do Castelo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">14</td>
+	<td class="text_center">1-1.5</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Santa Cruz</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">SW</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Horta</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Angra do Heroísmo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">W</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>P. Delgada</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">16</td>
+	<td class="text_center">1-2</td>
+	<td class="text_center">N</td>
+	</tr>
+	
+</table>
+
+<h3 class="bckg_blue martop20">Previs&atilde;o de &Iacute;ndice Ultravioleta para  Ter, 21 Fevereiro 2017</h3>
+<table class="tablelist block600w" summary="Previs&atilde;o de &Iacute;ndice Ultravioleta para  2017-02-21">
+	<tr><th>Local</th><th>Per&iacute;odo</th><th>&Iacute;ndice UV</th><th>Intervalo de tempo</th></tr>	
+
+	<tr class="bkg_odd">
+	<td>Aveiro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Beja</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Bragança</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Braga</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Castelo Branco</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Coimbra</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Évora</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Faro</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Funchal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               5
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Guarda</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Leiria</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Lisboa</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Penhas Douradas</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Portalegre</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Porto Santo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               5
+
+<!--			   4
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Sagres</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   2
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santarém</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Setúbal</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Sines</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Viana do Castelo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Viseu</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Vila Real</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Santa Cruz</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>Horta</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               3
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_even">
+	<td>Angra do Heroísmo</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+	<tr class="bkg_odd">
+	<td>P. Delgada</td>
+	<td class="text_center">00h - 24h</td>
+	<td class="text_center">
+				
+
+                               4
+
+<!--			   3
+-->
+        </td>
+	<td class="text_center">14h-14h</td>
+	</tr>
+	
+</table>
+</div>
+</div>
+
+
+
+
+
+        		</div>
+        		<!-- END CENTRAL & RIGHT CONTENT  -->
+        		
+
+
+          	<div id="BotsCont">
+            		<ul>
+              			<li><a href="?print=true" target="_blank"><i class="fa fa-lg fa-print"></i> Imprimir</a></li>
+              			<li class="">&nbsp;|&nbsp;</li>
+              			<li><a href="#contenttop"><i class="fa fa-lg fa-chevron-circle-up"></i> Topo</a></li>
+<!--
+              			<li class="">&nbsp;|&nbsp;</li>
+              			<li><a href="#"><i class="fa fa-lg fa-bookmark-o"></i> Fechar</a></li>
+-->
+            		</ul>
+          	</div>
+    
+        		<div class="brclearall">&nbsp;</div>
+      		<!--</div>-->
+	</div>      	
+	<!-- END MAIN CONTENT  -->        
+      	<!-- START FOOTER CONTENT  -->        
+	
+
+
+	
+
+
+
+
+<div class="brclearall">&nbsp;</div>
+  <div id="FooterMenu">       
+    <div class="nav_footer" >
+      <ul class="nav_map">
+
+<li><h2>Media</h2><ul class='nav'><li class='news'><a href='/opencms/pt/media/noticias/index.jsp' target='_self'>Notícias</a></li><li class='comunication'><a href='/opencms/pt/geofisica/comunicados/' target='_self'>Comunicados</a></li><li class='seminar'><a href='/opencms/pt/media/divulgacao/' target='_self'>Palestras / formações</a></li></ul></li><li><h2>Redes Sociais</h2><ul class='nav'><li class='facebook'><a href='https://www.facebook.com/ipma.pt' target='_blank'>Facebook</a></li><li class='twitter'><a href='https://twitter.com/ipma_pt' target='_blank'>Twitter</a></li><li class='youtube'><a href='https://www.youtube.com/ipmaPT' target='_blank'>YouTube</a></li><li class='instagram'><a href='https://www.instagram.com/ipma.pt/' target='_blank'>Instagram</a></li></ul></li><li><h2>Serviços</h2><ul class='nav'><li class='rss'><a href='/opencms/pt/produtoseservicos/index.jsp?page=rss.xml' target='_self'>RSS</a></li><li class='apps_android'><a href='https://play.google.com/store/apps/details?id=pt.ipma.meteo&amp;hl=pt_PT' target='_blank'>Apps Android</a></li><li class='apps_apple'><a href='https://itunes.apple.com/pt/app/meteo-ipma/id889918105?ls=1&amp;mt=8' target='_blank'>Apps Apple</a></li><li class='pda'><a href='http://pda.ipma.pt' target='_blank'>PDA</a></li><li class='services'><a href='/opencms/pt/produtoseservicos/index.jsp' target='_self'>Produtos e serviços</a></li></ul></li><li><h2>Informações</h2><ul class='nav'><li class='contacts'><a href='/opencms/pt/siteinfo/contacto.jsp' target='_self'>Contactos</a></li><li class='links'><a href='/opencms/pt/siteinfo/index.html?page=links.xml' target='_self'>Links úteis</a></li><li class='scholarship'><a href='/opencms/pt/recrutamento/bolsas/index.jsp' target='_self'>Bolsas de investigação</a></li><li class='eeagrants'><a href='/opencms/pt/investigacao/eeagrants/index.jsp' target='_self'>Projetos EEA Grants</a></li></ul></li><li><h2>Sobre o Site</h2><ul class='nav'><li class='acess'><a href='/opencms/pt/siteinfo/index.html?page=acessibilidade.xml' target='_self'>Acessibilidades</a></li><li class='legal'><a href='/opencms/pt/siteinfo/index.html?page=index.xml' target='_self'>Avisos legais</a></li><li class='sitemap'><a href='/opencms/pt/siteinfo/sitemap.jsp' target='_self'>Mapa do site</a></li><li class='login'><a href='/opencms/pt/siteinfo/register.jsp' target='_self'>Efetuar registo</a></li></ul></li><li><h2>Projectos WEB</h2><ul class='nav'><li class='metglobal'><a href='http://meteoglobal.ipma.pt' target='_blank'>Meteoglobal</a></li><li class='subs'><a href='http://subscricoes.ipma.pt' target='_blank'>Subscrições</a></li><li class='quest'><a href='http://inqueritos.ipma.pt' target='_blank'>Inquéritos</a></li><li class='moodle'><a href='http://elearning.ipma.pt' target='_blank'>E-learning</a></li><li class='shakemap'><a href='http://shakemap.ipma.pt' target='_blank'>Shakemap</a></li></ul></li>
+			</ul>
+		</div>
+	</div>
+
+
+
+	
+
+
+    <div class="brclearall">&nbsp;</div>
+    <div class="nav_credits">
+      <ul class="">
+        <li class="cert"><a href="http://www.apcer.pt/" target="_blank"><img src="/export/system/modules/ipma.website/resources/images/logo_apcer.png" alt="Apcer - A marca da Certifica&ccedil;&atilde;o"/></a></li>
+        <li class="credits">
+
+
+<script type="text/javascript">
+<!--
+var nhourslocal = parseInt('11',10);
+var nminslocal = parseInt('08',10);
+var nsecslocal = parseInt('19',10);
+
+var nhoursutc = parseInt('11',10);
+var nminsutc = parseInt('08',10);
+var nsecsutc = parseInt('19',10);
+
+function startLocalClock(){
+	if(++nsecslocal > 59){
+		nsecslocal = 0;
+		if(++nminslocal > 59 ){
+			nminslocal = 0;
+			if (++nhourslocal > 23){
+				nhourslocal = 0;
+				nminslocal = 0;
+				nsecslocal = 0;
+			}
+		}
+	}
+
+	var strSecs = nsecslocal < 10 ? "0" + nsecslocal : nsecslocal;
+	var strMins = nminslocal < 10 ? "0" + nminslocal : nminslocal;
+	var strHours = nhourslocal < 10 ? "0" + nhourslocal : nhourslocal;
+
+	document.getElementById("localClock").innerHTML=strHours+"h"+strMins+"m";
+	setTimeout('startLocalClock()',1000);
+}
+
+function startUtcClock(){
+	if(++nsecsutc > 59){
+		nsecsutc = 0;
+		if(++nminsutc > 59 ){
+			nminsutc = 0;
+			if (++nhoursutc > 23){
+				nhoursutc = 0;
+				nminsutc = 0;
+				nsecsutc = 0;
+			}
+		}
+	}
+
+	var strSecs = nsecsutc < 10 ? "0" + nsecsutc : nsecsutc;
+	var strMins = nminsutc < 10 ? "0" + nminsutc : nminsutc;
+	var strHours = nhoursutc < 10 ? "" + nhoursutc : nhoursutc;
+
+	document.getElementById("utcClock").innerHTML=strHours+"h"+strMins+"m";
+	setTimeout('startUtcClock()',1000);
+}
+//-->
+</script>
+<noscript>time</noscript>
+Lisboa: <div class="clock" id="localClock"></div> &nbsp; &nbsp; 
+UTC: <div class="clock" id="utcClock"></div>
+<script type="text/javascript">
+<!--
+ startLocalClock();
+ startUtcClock();
+//-->
+</script>
+<noscript>time</noscript>
+<br/>Copyright © <strong>Instituto Português do Mar e da Atmosfera&nbsp;</strong>2017<br/><em></em></li>
+        <li class="ministerio"><a href="http://www.portugal.gov.pt/pt/ministerios/mm.aspx" target="_blank"><img src="/export/sites/ipma/bin/icons/ic.PORTUGAL.png" alt="Ministério do Mar"/></a></li>
+      </ul>
+    </div>
+<!--<script type="text/javascript">
+	tabdropdown.initializetabmenu("dropmenu")
+</script>
+<noscript>Inicializar menu</noscript>-->
+
+
+
+<script type="text/javascript">
+<!--//
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-32378874-1']);
+  _gaq.push(['_setDomainName', 'ipma.pt']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+//-->
+</script>
+
+
+
+
+
+<!-- END MAIN CONTENT  -->
+</div>
+</div>
+
+</body>
+</html>
